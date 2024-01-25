@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: product_model
+    description: 
+
+    columns:
+      - name: 
+        description: 
+        tests:
+
+  - name: 
+    description: 
+
+    columns:
+      - name: 
+        tests:
+        description: 

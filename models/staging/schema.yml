@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stg_rugs_usa_parent
+    columns:
+      - name: 
+        tests:
+
+  - name: stg_varient
+    columns:
+      - name: 
+        tests:
+
