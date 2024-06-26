@@ -10,7 +10,7 @@ renamed as (
         pid as product_id,
         color_id,
         color_value,
-        dw_insert_timestamp,
+        dw_insert_timestamp
 
     from source
 
