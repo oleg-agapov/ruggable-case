@@ -1,1 +1,2 @@
+pytz
 dbt-postgres==1.2.0
