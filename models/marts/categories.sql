@@ -1,4 +1,5 @@
 select
+    surrogate_key,
     product_id,
     category_id,
     category_value,

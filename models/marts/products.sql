@@ -6,6 +6,7 @@
 
 
 select
+    surrogate_key,
     product_id,
     product_type_id,
     product_name,

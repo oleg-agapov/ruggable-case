@@ -7,6 +7,7 @@ with source as (
 renamed as (
 
     select
+        {{ dbt_utils.surrogate_key(['pad_id', 'p_id']) }} as surrogate_key,
         pad_id,
         p_id as product_id,
         variant,
@@ -22,9 +23,17 @@ renamed as (
 
     from source
 
+),
+
+deduplicated as (
+    select *,
+        row_number() over (partition by surrogate_key order by dw_insert_timestamp desc) as rn
+    from renamed
 )
 
-select * from renamed
+select * 
+from deduplicated
+where rn = 1
 
 /*
     pad_id       |    size    |   shape   | price | width | sqft |   type   | stock | height | variant |   pid     |    dw_insert_timestamp     

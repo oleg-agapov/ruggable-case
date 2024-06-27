@@ -7,17 +7,27 @@ with source as (
 renamed as (
 
     select
+        {{ dbt_utils.surrogate_key(['base_url', 'page_links', 'card_links']) }} as surrogate_key,
         base_url,
         page_links,
         card_links,
+        replace(card_links, 'https://www.rugsusa.com/', '') as product_url,
         request_time_stamp,
         dw_insert_timestamp
 
     from source
 
+),
+
+deduplicated as (
+    select *,
+        row_number() over (partition by surrogate_key order by dw_insert_timestamp desc) as rn
+    from renamed
 )
 
-select * from renamed
+select * 
+from deduplicated
+where rn = 1
 
 /*
                       base_url                       |                     page_links                      |                                            card_links                                            |     request_time_stamp     |    dw_insert_timestamp     

@@ -1,4 +1,5 @@
 select
+    surrogate_key,
     pad_id,
     product_id
     variant,

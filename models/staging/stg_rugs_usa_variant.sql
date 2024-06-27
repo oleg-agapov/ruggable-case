@@ -7,8 +7,9 @@ with source as (
 renamed as (
 
     select
-        pid as product_id,
+        {{ dbt_utils.surrogate_key(['variant', 'pid']) }} as surrogate_key,
         variant as variant,
+        pid as product_id,
         actual_size,
         weave_feature,
         weave_cat,
@@ -34,9 +35,17 @@ renamed as (
 
     from source
 
+),
+
+deduplicated as (
+    select *,
+        row_number() over (partition by surrogate_key order by dw_insert_timestamp desc) as rn
+    from renamed
 )
 
-select * from renamed
+select * 
+from deduplicated
+where rn = 1
 
 /*
     pid    | variant |   actual_size    | weave_feature | weave_cat | size_grp |  shipping_size   |   shape   | weight | price | msrp  | stock_level | depletion_level | low_stock | estimated_delivery_date | this_isd_range |  status  | origin | new_arrival | stock_msg | stock_edd_msg | other_stock_core | other_stock_compass |    dw_insert_timestamp     

@@ -7,16 +7,24 @@ with source as (
 renamed as (
 
     select
+        {{ dbt_utils.surrogate_key(['pid', 'category_id']) }} as surrogate_key,
         pid as product_id,
         category_id,
         category_value,
         dw_insert_timestamp
-
     from source
 
+),
+
+deduplicated as (
+    select *,
+        row_number() over (partition by surrogate_key order by dw_insert_timestamp desc) as rn
+    from renamed
 )
 
-select * from renamed
+select * 
+from deduplicated
+where rn = 1
 
 /*
  product_id |    category_id    |      category_value      |    dw_insert_timestamp     |

@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: stg_rugs_usa_category_map
+    columns:
+      - name: surrogate_key
+        tests:
+          - unique
+          - not_null
+  
+  - name: stg_rugs_usa_color_map
+    columns:
+      - name: surrogate_key
+        tests:
+          - unique
+          - not_null
+  
+  - name: stg_rugs_usa_links
+    columns:
+      - name: surrogate_key
+        tests:
+          - unique
+          - not_null
+  
+  - name: stg_rugs_usa_pads_upsell
+    columns:
+      - name: surrogate_key
+        tests:
+          - unique
+          - not_null
+  
+  - name: stg_rugs_usa_parent
+    columns:
+      - name: surrogate_key
+        tests:
+          - unique
+          - not_null
+  
+  - name: stg_rugs_usa_variant
+    columns:
+      - name: surrogate_key
+        tests:
+          - unique
+          - not_null

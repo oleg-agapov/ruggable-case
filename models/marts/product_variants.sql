@@ -1,4 +1,5 @@
 select
+    surrogate_key,
     product_id,
     variant,
     actual_size,
