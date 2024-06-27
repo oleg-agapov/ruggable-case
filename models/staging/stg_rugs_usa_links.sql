@@ -11,7 +11,7 @@ renamed as (
         base_url,
         page_links,
         card_links,
-        replace(card_links, 'https://www.rugsusa.com/', '') as product_url,
+        {{ dbt_utils.get_url_path(field='card_links') }} as product_url,
         request_time_stamp,
         dw_insert_timestamp
 
