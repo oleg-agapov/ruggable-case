@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: categories
+    columns:
+      - name: surrogate_key
+        tests:
+          - unique
+          - not_null
+    
+  - name: product_colors
+    columns:
+      - name: surrogate_key
+        tests:
+          - unique
+          - not_null
+    
+  - name: product_pads
+    columns:
+      - name: surrogate_key
+        tests:
+          - unique
+          - not_null
+    
+  - name: product_searches
+    columns:
+      - name: surrogate_key
+        tests:
+          - unique
+          - not_null
+    
+  - name: product_variants
+    columns:
+      - name: surrogate_key
+        tests:
+          - unique
+          - not_null
+    
+  - name: products
+    columns:
+      - name: surrogate_key
+        tests:
+          - unique
+          - not_null
+    
