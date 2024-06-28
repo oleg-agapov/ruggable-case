@@ -2,6 +2,7 @@ version: 2
 
 models:
   - name: categories
+    description: Categories and offers of our products
     columns:
       - name: surrogate_key
         tests:
@@ -9,6 +10,7 @@ models:
           - not_null
     
   - name: product_colors
+    description: A dictionary with products color mapping
     columns:
       - name: surrogate_key
         tests:
@@ -16,6 +18,7 @@ models:
           - not_null
     
   - name: product_pads
+    description: A dictionary of pads, their properties and availability
     columns:
       - name: surrogate_key
         tests:
@@ -23,6 +26,7 @@ models:
           - not_null
     
   - name: product_searches
+    description: Table that shows which products were searched and displayed to users
     columns:
       - name: surrogate_key
         tests:
@@ -30,6 +34,7 @@ models:
           - not_null
     
   - name: product_variants
+    description: A dictionary with product variants, their properties and availaility
     columns:
       - name: surrogate_key
         tests:
@@ -37,6 +42,7 @@ models:
           - not_null
     
   - name: products
+    description: Table that describes the product line of the store
     columns:
       - name: surrogate_key
         tests:
