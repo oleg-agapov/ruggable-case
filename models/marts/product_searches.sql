@@ -1,14 +1,11 @@
 with 
 
 product_searches as (
-    select *
-    from {{ ref('stg_rugs_usa_links') }}
-    where base_url = 'https://www.rugsusa.com/rugsusa/control/search-rugs'
+    select * from {{ ref('int_product_searches') }}
 ),
 
 products as (
-    select *
-    from {{ ref('stg_rugs_usa_parent') }}
+    select * from {{ ref('stg_rugs_usa_parent') }}
 )
 
 select
@@ -40,6 +37,6 @@ select
     p.clearance,
     p.long_description,
     p.shop_by_room
-from product_searches ps
-left join products p 
+from product_searches as ps
+left join products as p
     on p.product_url = ps.product_url
