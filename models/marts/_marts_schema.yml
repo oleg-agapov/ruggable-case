@@ -8,7 +8,12 @@ models:
         tests:
           - unique
           - not_null
+      - name: product_id
+      - name: category_id
+      - name: category_value
+      - name: dw_insert_timestamp
     
+
   - name: product_colors
     description: A dictionary with products color mapping
     columns:
@@ -16,7 +21,12 @@ models:
         tests:
           - unique
           - not_null
+      - name: product_id
+      - name: color_id
+      - name: color_value
+      - name: dw_insert_timestamp
     
+
   - name: product_pads
     description: A dictionary of pads, their properties and availability
     columns:
@@ -24,7 +34,20 @@ models:
         tests:
           - unique
           - not_null
+      - name: pad_id
+      - name: product_id
+      - name: variant
+      - name: size
+      - name: shape
+      - name: price
+      - name: width
+      - name: sqft
+      - name: type
+      - name: stock
+      - name: height
+      - name: dw_insert_timestamp
     
+
   - name: product_searches
     description: Table that shows which products were searched and displayed to users
     columns:
@@ -32,7 +55,35 @@ models:
         tests:
           - unique
           - not_null
+      - name: base_url
+      - name: page_links
+      - name: card_links
+      - name: product_url
+      - name: request_time_stamp
+      - name: dw_insert_timestamp
+      - name: product_id
+      - name: product_type_id
+      - name: product_name
+      - name: origin
+      - name: thickness
+      - name: material
+      - name: weave
+      - name: weave_feature
+      - name: color
+      - name: brand
+      - name: image_name
+      - name: image_type
+      - name: internal_name
+      - name: category
+      - name: min_price
+      - name: max_price
+      - name: availability
+      - name: aggregate
+      - name: clearance
+      - name: long_description
+      - name: shop_by_room
     
+
   - name: product_variants
     description: A dictionary with product variants, their properties and availaility
     columns:
@@ -40,7 +91,32 @@ models:
         tests:
           - unique
           - not_null
+      - name: product_id
+      - name: variant
+      - name: actual_size
+      - name: weave_feature
+      - name: weave_cat
+      - name: size_grp
+      - name: shipping_size
+      - name: shape
+      - name: weight
+      - name: price
+      - name: msrp
+      - name: stock_level
+      - name: depletion_level
+      - name: low_stock
+      - name: estimated_delivery_date
+      - name: this_isd_range
+      - name: status
+      - name: origin
+      - name: new_arrival
+      - name: stock_msg
+      - name: stock_edd_msg
+      - name: other_stock_core
+      - name: other_stock_compass
+      - name: dw_insert_timestamp
     
+
   - name: products
     description: Table that describes the product line of the store
     columns:
@@ -48,4 +124,32 @@ models:
         tests:
           - unique
           - not_null
+      - name: product_id
+      - name: product_type_id
+      - name: product_name
+      - name: product_url
+      - name: origin
+      - name: thickness
+      - name: material
+      - name: weave
+      - name: weave_feature
+      - name: color
+      - name: brand
+      - name: image_name
+      - name: image_type
+      - name: internal_name
+      - name: category
+      - name: min_price
+      - name: max_price
+      - name: availability
+      - name: aggregate
+      - name: clearance
+      - name: long_description
+      - name: shop_by_room
+      - name: dw_insert_timestamp
+      - name: product_searched_times
+      - name: variants_in_stock
+      - name: variants_out_of_stock
+      - name: variants_back_ordered
+      - name: available_colors
     
